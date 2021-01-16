@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   precision.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vfurmane <vfurmane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/15 19:50:59 by vfurmane          #+#    #+#             */
-/*   Updated: 2021/01/16 15:33:59 by vfurmane         ###   ########.fr       */
+/*   Created: 2021/01/16 15:25:40 by vfurmane          #+#    #+#             */
+/*   Updated: 2021/01/16 15:34:07 by vfurmane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "precision.h"
 
-# include <stdarg.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include "flags.h"
+int	ft_precision(const char *str, int *str_index)
+{
+	int	precision;
 
-int	ft_printf(const char *str, ...);
-int	ft_parse_format(const char *str, int *str_index, char *buffer, int *i,
-	va_list args);
-int	ft_flush(char *buffer);
-int	ft_precision(const char *str, int *str_index);
-
-#endif
+	if (str[(*str_index)++] == '.')
+		precision = ft_atoi(&str[*str_index]);
+	while (str[*str_index] >= '0' && str[*str_index] <= '9')
+		(*str_index)++;
+	return (precision);
+}
