@@ -6,7 +6,7 @@
 /*   By: vfurmane <vfurmane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 19:45:18 by vfurmane          #+#    #+#             */
-/*   Updated: 2021/01/16 11:33:49 by vfurmane         ###   ########.fr       */
+/*   Updated: 2021/01/16 15:13:13 by vfurmane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,17 @@ int	ft_printf(const char *str, ...)
 	int		str_index;
 	char	*buffer;
 	va_list	args;
+	va_list	args_dup;
 
 	if (BUFSIZ <= 0 || !(buffer = malloc((BUFSIZ + 1) * sizeof(*buffer))))
 		return (-1);
 	va_start(args, str);
+	va_start(args_dup, args);
 	str_index = 0;
 	while (str[str_index])
 	{
 		if (str[str_index] == '%')
-			ft_parse_format(str, &str_index, buffer, &i, args); /* ft to do */
+			ft_parse_format(str, &str_index, buffer, &i, args_dup); /* ft to do */
 		else
 			buffer[i++] = str[str_index];
 		if (i == BUFSIZ)
