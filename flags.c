@@ -6,13 +6,13 @@
 /*   By: vfurmane <vfurmane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/16 11:49:20 by vfurmane          #+#    #+#             */
-/*   Updated: 2021/01/16 13:01:51 by vfurmane         ###   ########.fr       */
+/*   Updated: 2021/01/16 15:01:45 by vfurmane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "flags.h"
 
-int	ft_flags(const char *str, int *str_index, char **res)
+int	ft_flags(const char *str, int *str_index, va_list args, char **res)
 {
 	int		minus;
 	char	filler;
@@ -27,7 +27,7 @@ int	ft_flags(const char *str, int *str_index, char **res)
 			filler = '0';
 		(*str_index)++;
 	}
-	if ((*res = ft_width(str, str_index, filler)) == NULL)
+	if ((*res = ft_width(str, str_index, args, filler)) == NULL)
 		return (-1);
 	return (minus);
 }

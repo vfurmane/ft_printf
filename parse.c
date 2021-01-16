@@ -6,7 +6,7 @@
 /*   By: vfurmane <vfurmane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/16 11:31:24 by vfurmane          #+#    #+#             */
-/*   Updated: 2021/01/16 13:02:43 by vfurmane         ###   ########.fr       */
+/*   Updated: 2021/01/16 15:06:06 by vfurmane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,6 @@ int	ft_parse_format(const char *str, int *str_index, char *buffer, int *i,
 	(void)i; /* ===== DELETE ===== */
 	(void)args; /* ===== DELETE ===== */
 	(*str_index)++;
-	ft_flags(str, str_index, &res);
+	ft_flags(str, str_index, args, &res);
 	return (0);
 }
