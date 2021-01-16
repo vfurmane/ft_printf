@@ -1,26 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   flags.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vfurmane <vfurmane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/15 19:50:59 by vfurmane          #+#    #+#             */
-/*   Updated: 2021/01/16 11:49:17 by vfurmane         ###   ########.fr       */
+/*   Created: 2021/01/16 11:48:22 by vfurmane          #+#    #+#             */
+/*   Updated: 2021/01/16 13:01:45 by vfurmane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#ifndef FLAGS_H
+# define FLAGS_H
 
-# include <stdarg.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include "flags.h"
+# include "width.h"
+# include "libft.h"
 
-int	ft_printf(const char *str, ...);
-int	ft_parse_format(const char *str, int *str_index, char *buffer, int *i,
-	va_list args);
-int	ft_flush(char *buffer);
+int	ft_flags(const char *str, int *str_index, char **res);
 
 #endif

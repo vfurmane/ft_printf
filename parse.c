@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vfurmane <vfurmane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/15 19:50:59 by vfurmane          #+#    #+#             */
-/*   Updated: 2021/01/16 11:49:17 by vfurmane         ###   ########.fr       */
+/*   Created: 2021/01/16 11:31:24 by vfurmane          #+#    #+#             */
+/*   Updated: 2021/01/16 13:02:43 by vfurmane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include <stdarg.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include "flags.h"
+// 1. Check flags
+// 2. Check width
+// 3. Check precision
+// 4. Check length
+// 5. Check specifier
 
-int	ft_printf(const char *str, ...);
 int	ft_parse_format(const char *str, int *str_index, char *buffer, int *i,
-	va_list args);
-int	ft_flush(char *buffer);
+		va_list args)
+{
+	char	*res;
 
-#endif
+	(void)buffer; /* ===== DELETE ===== */
+	(void)i; /* ===== DELETE ===== */
+	(void)args; /* ===== DELETE ===== */
+	(*str_index)++;
+	ft_flags(str, str_index, &res);
+	return (0);
+}

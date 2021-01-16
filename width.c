@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   width.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vfurmane <vfurmane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/15 19:50:59 by vfurmane          #+#    #+#             */
-/*   Updated: 2021/01/16 11:49:17 by vfurmane         ###   ########.fr       */
+/*   Created: 2021/01/16 12:41:13 by vfurmane          #+#    #+#             */
+/*   Updated: 2021/01/16 13:03:31 by vfurmane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "width.h"
 
-# include <stdarg.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include "flags.h"
-
-int	ft_printf(const char *str, ...);
-int	ft_parse_format(const char *str, int *str_index, char *buffer, int *i,
-	va_list args);
-int	ft_flush(char *buffer);
-
-#endif
+char	*ft_width(const char *str, int *str_index, char filler)
+{
+	int		i;
+	int		len;
+	char	*res;
+	
+	len = ft_atoi(&str[*str_index]);
+	while (str[*str_index] >= '0' && str[*str_index] <= '9')
+		(*str_index)++;
+	if ((res = malloc((len + 1) * sizeof(*res))) == NULL)
+		return (NULL);
+	i = 0;
+	while (i < len)
+		res[i++] = filler;
+	return (res);
+}
