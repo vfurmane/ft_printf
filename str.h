@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_chars.h                                      :+:      :+:    :+:   */
+/*   str.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vfurmane <vfurmane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/17 18:10:31 by vfurmane          #+#    #+#             */
-/*   Updated: 2021/01/17 21:56:03 by vfurmane         ###   ########.fr       */
+/*   Created: 2021/01/17 21:54:03 by vfurmane          #+#    #+#             */
+/*   Updated: 2021/01/17 22:00:59 by vfurmane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINT_CHARS_H
-# define PRINT_CHARS_H
+#ifndef STR_H
+# define STR_H
 
-# include <stdarg.h>
 # include <stdlib.h>
-# include "str.h"
-# include "libft.h"
 
-char	*ft_print_char(va_list args);
-char	*ft_print_string(va_list args);
-char	*ft_print_address(va_list args);
+char	*ft_long_itoa(long int nbr);
+int		ft_count_digits_hex(int nbr);
 
 #endif

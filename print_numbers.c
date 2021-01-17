@@ -6,7 +6,7 @@
 /*   By: vfurmane <vfurmane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/17 09:56:41 by vfurmane          #+#    #+#             */
-/*   Updated: 2021/01/17 21:25:17 by vfurmane         ###   ########.fr       */
+/*   Updated: 2021/01/17 22:04:42 by vfurmane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,36 +30,17 @@ char	*ft_realloc_nbr(char *str, int len)
 	return (new_str);
 }
 
-char	*ft_print_int(va_list args, int precision)
+char	*ft_print_int(va_list args, long int precision, int isunsigned)
 {
 	char	*str;
 
-	str = ft_itoa(va_arg(args, int));
+	if (isunsigned == 1)
+		str = ft_long_itoa(-va_arg(args, long int));
+	else
+		str = ft_long_itoa(va_arg(args, long int));
 	if (ft_strlen(str) < precision)
 		str = ft_realloc_nbr(str, precision);
 	return (str);
-}
-
-int		ft_count_digits_hex_sign(int nbr)
-{
-	int				len;
-	unsigned int	nb;
-
-	if (nbr == 0)
-		return (1);
-	len = 0;
-	if (nbr < 0)
-		len++;
-	if (nbr < 0)
-		nb = -nbr;
-	else
-		nb = nbr;
-	while (nb)
-	{
-		nb /= 16;
-		len++;
-	}
-	return (len);
 }
 
 char	*ft_print_hex(va_list args, int lower)
@@ -77,7 +58,7 @@ char	*ft_print_hex(va_list args, int lower)
 	nb = nbr;
 	if (nbr < 0)
 		nb = -nbr;
-	len = ft_count_digits_hex_sign(nb);
+	len = ft_count_digits_hex(nb);
 	if ((str = malloc((len + 1) * sizeof(*str))) == NULL)
 		return (NULL);
 	str[0] = '-';

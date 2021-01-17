@@ -6,7 +6,7 @@
 /*   By: vfurmane <vfurmane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/17 18:09:50 by vfurmane          #+#    #+#             */
-/*   Updated: 2021/01/17 19:45:06 by vfurmane         ###   ########.fr       */
+/*   Updated: 2021/01/17 21:55:05 by vfurmane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,21 +35,6 @@ char	*ft_print_string(va_list args)
 		return (NULL);
 	ft_strlcpy(str, ref, str_len + 1);
 	return (str);
-}
-
-int		ft_count_digits_hex(unsigned int nbr)
-{
-	int	len;
-
-	if (nbr == 0)
-		return (1);
-	len = 0;
-	while (nbr)
-	{
-		nbr /= 16;
-		len++;
-	}
-	return (len);
 }
 
 char	*ft_print_address(va_list args)
