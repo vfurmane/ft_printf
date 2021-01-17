@@ -6,7 +6,7 @@
 /*   By: vfurmane <vfurmane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/16 11:31:24 by vfurmane          #+#    #+#             */
-/*   Updated: 2021/01/17 14:29:42 by vfurmane         ###   ########.fr       */
+/*   Updated: 2021/01/17 15:07:04 by vfurmane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,10 @@ char	*ft_format_str(char *res, char *str, int minus)
 	if (res_len < str_len)
 	{
 		free(res);
-		return (str);
+		if ((res = malloc((str_len + 1) * sizeof(*res))) == NULL)
+			return (NULL);
+		res_len = str_len;
+		res[res_len] = '\0';
 	}
 	i = -1;
 	if (minus == 0)
