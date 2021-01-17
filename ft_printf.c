@@ -6,7 +6,7 @@
 /*   By: vfurmane <vfurmane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 19:45:18 by vfurmane          #+#    #+#             */
-/*   Updated: 2021/01/16 15:32:57 by vfurmane         ###   ########.fr       */
+/*   Updated: 2021/01/17 12:13:46 by vfurmane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,34 +18,38 @@
 // 3. Put the result into the buffer
 // 4. Flush the buffer once it is full (check that at each character copied)
 
+int	ft_flush(char *buffer, int size)
+{
+	write(1, buffer, size);
+	return (0);
+}
+
 int	ft_printf(const char *str, ...)
 {
 	int		i;
 	int		str_index;
 	char	*buffer;
 	va_list	args;
-	va_list	args_dup;
 
 	if (BUFSIZ <= 0 || !(buffer = malloc((BUFSIZ + 1) * sizeof(*buffer))))
 		return (-1);
 	va_start(args, str);
-	va_copy(args_dup, args);
 	str_index = 0;
 	while (str[str_index])
 	{
 		if (str[str_index] == '%')
-			ft_parse_format(str, &str_index, buffer, &i, args_dup); /* ft to do */
+			ft_parse_format(str, &str_index, buffer, &i, args);
 		else
 			buffer[i++] = str[str_index];
 		if (i == BUFSIZ)
 		{
 			buffer[BUFSIZ] = '\0';
-			ft_flush(buffer); /* ft to do */
+			ft_flush(buffer, i);
 			i = 0;
 		}
 		str_index++;
 	}
-	ft_flush(buffer);
+	ft_flush(buffer, i);
 	free(buffer);
 	va_end(args);
 	return (0);
