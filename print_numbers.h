@@ -6,7 +6,7 @@
 /*   By: vfurmane <vfurmane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/17 09:57:20 by vfurmane          #+#    #+#             */
-/*   Updated: 2021/01/17 10:59:36 by vfurmane         ###   ########.fr       */
+/*   Updated: 2021/01/17 17:29:00 by vfurmane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,6 @@
 # include <stdarg.h>
 # include "libft.h"
 
-char	*ft_print_int(va_list args);
+char	*ft_print_int(va_list args, int precision);
 
 #endif

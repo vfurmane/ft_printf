@@ -6,7 +6,7 @@
 /*   By: vfurmane <vfurmane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/16 11:31:24 by vfurmane          #+#    #+#             */
-/*   Updated: 2021/01/17 16:45:18 by vfurmane         ###   ########.fr       */
+/*   Updated: 2021/01/17 17:37:18 by vfurmane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@
 
 char	*ft_realloc_res(char *res, int len)
 {
+	free(res);
 	if ((res = malloc((len + 1) * sizeof(*res))) == NULL)
 		return (NULL);
 	res[len] = '\0';
-	free(res);
 	return (res);
 }
 
@@ -86,7 +86,7 @@ int		ft_parse_format(const char *str, int *str_index, char *buffer, int *i,
 	total_size = 0;
 	minus = ft_flags(str, str_index, args, &res);
 	precision = ft_precision(str, str_index, args);
-	substr = ft_specifier(&str[*str_index], args);
+	substr = ft_specifier(&str[*str_index], args, precision);
 	if (substr == NULL || (res = ft_format_str(res, substr, minus)) == NULL)
 		return (-1);
 	total_size += ft_copy_in_buffer(res, buffer, i);
