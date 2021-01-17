@@ -6,11 +6,11 @@
 #    By: vfurmane <vfurmane@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/16 13:46:52 by vfurmane          #+#    #+#              #
-#    Updated: 2021/01/16 14:49:05 by vfurmane         ###   ########.fr        #
+#    Updated: 2021/01/17 09:43:57 by vfurmane         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS		= ft_printf.c parse.c flags.c width.c
+SRCS		= ft_printf.c parse.c flags.c width.c precision.c specifier.c
 OBJS		= $(SRCS:.c=.o)
 LIBFT_DIR	= libft
 LIBFT		= $(LIBFT_DIR)/libft.a
