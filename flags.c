@@ -6,7 +6,7 @@
 /*   By: vfurmane <vfurmane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/16 11:49:20 by vfurmane          #+#    #+#             */
-/*   Updated: 2021/01/16 15:01:45 by vfurmane         ###   ########.fr       */
+/*   Updated: 2021/01/17 15:27:59 by vfurmane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ int	ft_flags(const char *str, int *str_index, va_list args, char **res)
 			filler = '0';
 		(*str_index)++;
 	}
+	if (minus == 1)
+		filler = ' ';
 	if ((*res = ft_width(str, str_index, args, filler)) == NULL)
 		return (-1);
 	return (minus);
