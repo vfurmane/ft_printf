@@ -6,7 +6,7 @@
 /*   By: vfurmane <vfurmane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/16 12:41:13 by vfurmane          #+#    #+#             */
-/*   Updated: 2021/01/17 10:31:02 by vfurmane         ###   ########.fr       */
+/*   Updated: 2021/01/17 14:50:05 by vfurmane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,6 @@ char	*ft_width(const char *str, int *str_index, va_list args, char filler)
 	i = 0;
 	while (i < len)
 		res[i++] = filler;
+	res[i] = '\0';
 	return (res);
 }

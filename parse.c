@@ -6,7 +6,7 @@
 /*   By: vfurmane <vfurmane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/16 11:31:24 by vfurmane          #+#    #+#             */
-/*   Updated: 2021/01/17 12:37:36 by vfurmane         ###   ########.fr       */
+/*   Updated: 2021/01/17 14:29:42 by vfurmane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,15 +69,16 @@ int		ft_parse_format(const char *str, int *str_index, char *buffer, int *i,
 	if (substr == NULL || (res = ft_format_str(res, substr, minus)) == NULL)
 		return (-1);
 	j = 0;
-	while (substr[j])
+	while (res[j])
 	{
 		if (*i == BUFSIZ)
 		{
 			ft_flush(buffer, *i);
 			*i = 0;
 		}
-		buffer[(*i)++] = substr[j++];
+		buffer[(*i)++] = res[j++];
 	}
 	free(substr);
+	free(res);
 	return (0);
 }
