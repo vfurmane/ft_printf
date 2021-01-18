@@ -6,7 +6,7 @@
 /*   By: vfurmane <vfurmane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/17 09:56:41 by vfurmane          #+#    #+#             */
-/*   Updated: 2021/01/18 10:54:50 by vfurmane         ###   ########.fr       */
+/*   Updated: 2021/01/18 12:40:20 by vfurmane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,14 @@ char	*ft_realloc_nbr(char *str, int len)
 
 char	*ft_print_int(va_list args, long int precision, int isunsigned)
 {
-	char	*str;
+	long int	nbr;
+	char		*str;
 
-	if (isunsigned == 1)
-		str = ft_long_itoa(-va_arg(args, long int));
+	nbr = va_arg(args, long int);
+	if (isunsigned == 1 && nbr < 0)
+		str = ft_long_itoa(nbr);
 	else
-		str = ft_long_itoa(va_arg(args, long int));
+		str = ft_long_itoa(nbr);
 	if (str == NULL)
 		return (NULL);
 	if (ft_strlen(str) < precision)
