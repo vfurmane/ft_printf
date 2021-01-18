@@ -6,20 +6,11 @@
 /*   By: vfurmane <vfurmane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/16 11:31:24 by vfurmane          #+#    #+#             */
-/*   Updated: 2021/01/18 10:15:28 by vfurmane         ###   ########.fr       */
+/*   Updated: 2021/01/18 10:56:03 by vfurmane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-char	*ft_realloc_res(char *res, int len)
-{
-	free(res);
-	if ((res = malloc((len + 1) * sizeof(*res))) == NULL)
-		return (NULL);
-	res[len] = '\0';
-	return (res);
-}
 
 char	*ft_format_str(char *res, char *str, int minus)
 {
@@ -78,10 +69,16 @@ int		ft_parse_format(const char *str, int *str_index, char *buffer,
 	(*str_index)++;
 	total_size = 0;
 	minus = ft_flags(str, str_index, args, &res);
+	if (minus == -1)
+		return (-1);
 	precision = ft_precision(str, str_index, args);
 	substr = ft_specifier(&str[*str_index], args, precision);
 	if (substr == NULL || (res = ft_format_str(res, substr, minus)) == NULL)
+	{
+		free(res);
+		free(substr);
 		return (-1);
+	}
 	total_size += ft_copy_in_buffer(res, buffer, ft_get_buffer_i(buffer));
 	free(substr);
 	free(res);

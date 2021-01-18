@@ -6,7 +6,7 @@
 /*   By: vfurmane <vfurmane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/17 21:53:50 by vfurmane          #+#    #+#             */
-/*   Updated: 2021/01/18 09:54:50 by vfurmane         ###   ########.fr       */
+/*   Updated: 2021/01/18 10:57:25 by vfurmane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ char	*ft_long_itoa(long int nbr)
 	unsigned int	nb;
 
 	len = ft_count_digits(nbr);
-	if (!(str = malloc((len + 1) * sizeof(*str))))
+	if ((str = malloc((len + 1) * sizeof(*str))) == NULL)
 		return (NULL);
 	str[0] = '-';
 	if (nbr == 0)

@@ -6,7 +6,7 @@
 /*   By: vfurmane <vfurmane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/17 09:56:41 by vfurmane          #+#    #+#             */
-/*   Updated: 2021/01/17 22:04:42 by vfurmane         ###   ########.fr       */
+/*   Updated: 2021/01/18 10:54:50 by vfurmane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,10 @@ char	*ft_realloc_nbr(char *str, int len)
 	char	*new_str;
 
 	if ((new_str = malloc((len + 1) * sizeof(*new_str))) == NULL)
+	{
+		free(str);
 		return (NULL);
+	}
 	ft_memset(new_str, '0', len);
 	str_len = ft_strlen(str);
 	i = -1;
@@ -38,6 +41,8 @@ char	*ft_print_int(va_list args, long int precision, int isunsigned)
 		str = ft_long_itoa(-va_arg(args, long int));
 	else
 		str = ft_long_itoa(va_arg(args, long int));
+	if (str == NULL)
+		return (NULL);
 	if (ft_strlen(str) < precision)
 		str = ft_realloc_nbr(str, precision);
 	return (str);
