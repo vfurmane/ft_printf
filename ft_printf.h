@@ -6,7 +6,7 @@
 /*   By: vfurmane <vfurmane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 19:50:59 by vfurmane          #+#    #+#             */
-/*   Updated: 2021/01/18 09:50:51 by vfurmane         ###   ########.fr       */
+/*   Updated: 2021/01/18 10:15:41 by vfurmane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,9 @@
 # endif
 
 int	ft_printf(const char *str, ...);
-int	ft_parse_format(const char *str, int *str_index, char *buffer, int *i,
-	va_list args);
+int	ft_parse_format(const char *str, int *str_index, char *buffer,
+		va_list args);
+int	ft_get_buffer_i(char *buffer);
 int	ft_flush(char *buffer, int size);
 
 #endif

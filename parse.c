@@ -6,18 +6,11 @@
 /*   By: vfurmane <vfurmane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/16 11:31:24 by vfurmane          #+#    #+#             */
-/*   Updated: 2021/01/17 17:37:18 by vfurmane         ###   ########.fr       */
+/*   Updated: 2021/01/18 10:15:28 by vfurmane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-// 1. Check flags
-// 2. Check width
-// 3. Check precision
-// 4. Check length (optionnal, atm)
-// 5. Check specifier
-// 6. Print according to the parameters
 
 char	*ft_realloc_res(char *res, int len)
 {
@@ -54,7 +47,7 @@ char	*ft_format_str(char *res, char *str, int minus)
 	return (res);
 }
 
-int		ft_copy_in_buffer(char *res, char *buffer, int *i)
+int		ft_copy_in_buffer(char *res, char *buffer, int i)
 {
 	int	j;
 	int	total_size;
@@ -63,17 +56,17 @@ int		ft_copy_in_buffer(char *res, char *buffer, int *i)
 	total_size = 0;
 	while (res[j])
 	{
-		if (*i == BUFSIZ)
+		if (i == BUFSIZ)
 		{
-			total_size = ft_flush(buffer, *i);
-			*i = 0;
+			total_size = ft_flush(buffer, i);
+			i = 0;
 		}
-		buffer[(*i)++] = res[j++];
+		buffer[i++] = res[j++];
 	}
 	return (total_size);
 }
 
-int		ft_parse_format(const char *str, int *str_index, char *buffer, int *i,
+int		ft_parse_format(const char *str, int *str_index, char *buffer,
 		va_list args)
 {
 	int		total_size;
@@ -89,7 +82,7 @@ int		ft_parse_format(const char *str, int *str_index, char *buffer, int *i,
 	substr = ft_specifier(&str[*str_index], args, precision);
 	if (substr == NULL || (res = ft_format_str(res, substr, minus)) == NULL)
 		return (-1);
-	total_size += ft_copy_in_buffer(res, buffer, i);
+	total_size += ft_copy_in_buffer(res, buffer, ft_get_buffer_i(buffer));
 	free(substr);
 	free(res);
 	return (total_size);

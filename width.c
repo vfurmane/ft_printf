@@ -6,7 +6,7 @@
 /*   By: vfurmane <vfurmane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/16 12:41:13 by vfurmane          #+#    #+#             */
-/*   Updated: 2021/01/17 14:50:05 by vfurmane         ###   ########.fr       */
+/*   Updated: 2021/01/18 09:55:15 by vfurmane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*ft_width(const char *str, int *str_index, va_list args, char filler)
 	int		i;
 	int		len;
 	char	*res;
-	
+
 	len = ft_atoi(&str[*str_index]);
 	if (len == 0 && str[*str_index] == '*')
 	{

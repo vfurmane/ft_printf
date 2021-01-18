@@ -6,13 +6,13 @@
 /*   By: vfurmane <vfurmane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/17 21:53:50 by vfurmane          #+#    #+#             */
-/*   Updated: 2021/01/17 22:00:41 by vfurmane         ###   ########.fr       */
+/*   Updated: 2021/01/18 09:54:50 by vfurmane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "str.h"
 
-int	ft_count_digits(long int nbr)
+int		ft_count_digits(long int nbr)
 {
 	int	i;
 
@@ -28,7 +28,7 @@ int	ft_count_digits(long int nbr)
 	return (i);
 }
 
-char		*ft_long_itoa(long int nbr)
+char	*ft_long_itoa(long int nbr)
 {
 	int				i;
 	int				len;

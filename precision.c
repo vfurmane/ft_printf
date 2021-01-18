@@ -6,7 +6,7 @@
 /*   By: vfurmane <vfurmane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/16 15:25:40 by vfurmane          #+#    #+#             */
-/*   Updated: 2021/01/17 12:32:48 by vfurmane         ###   ########.fr       */
+/*   Updated: 2021/01/18 09:53:51 by vfurmane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	ft_precision(const char *str, int *str_index, va_list args)
 		(*str_index)++;
 		precision = va_arg(args, int);
 	}
-	else /* WTF ??? */
+	else
 		while (str[*str_index] >= '0' && str[*str_index] <= '9')
 			(*str_index)++;
 	return (precision);
