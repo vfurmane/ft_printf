@@ -6,12 +6,12 @@
 #    By: vfurmane <vfurmane@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/16 13:46:52 by vfurmane          #+#    #+#              #
-#    Updated: 2021/01/17 11:59:30 by vfurmane         ###   ########.fr        #
+#    Updated: 2021/01/18 12:35:26 by vfurmane         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS		= ft_printf.c parse.c flags.c width.c precision.c print_numbers.c \
-				specifier.c
+SRCS		= flags.c ft_printf.c parse.c precision.c print_chars.c \
+				print_numbers.c specifier.c str.c width.c
 OBJS		= $(SRCS:.c=.o)
 LIBFT_DIR	= libft
 LIBFT		= $(LIBFT_DIR)/libft.a
@@ -24,13 +24,13 @@ RM			= rm -f
 %.o:		%.c
 			$(CC) $(CFLAGS) -c $< -I $(LIBFT_DIR) -o $@
 
-all:		$(NAME)
+all:		$(LIBFT) $(NAME)
 
-$(NAME):	$(LIBFT) $(OBJS)
-			$(AR) $@ $^
+$(NAME):	$(OBJS)
+			$(AR) $@ $^ $(LIBFT_DIR)/*.o
 
 $(LIBFT):
-			cd $(LIBFT_DIR) && make
+			make -C libft all
 
 clean:
 			$(RM) $(OBJS)
