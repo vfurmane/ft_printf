@@ -6,7 +6,7 @@
 /*   By: vfurmane <vfurmane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/17 09:56:41 by vfurmane          #+#    #+#             */
-/*   Updated: 2021/01/19 11:52:53 by vfurmane         ###   ########.fr       */
+/*   Updated: 2021/01/19 13:33:13 by vfurmane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ char	*ft_print_int(va_list args, long int precision, int isunsigned)
 		str = ft_long_itoa((unsigned int)-nbr);
 	else if (isunsigned == 1)
 		str = ft_long_itoa((unsigned int)nbr);
+	else if (precision == 0 && nbr == 0)
+		str = ft_calloc(1, sizeof(*str));
 	else
 		str = ft_long_itoa((int)nbr);
 	if (str == NULL)

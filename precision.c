@@ -6,7 +6,7 @@
 /*   By: vfurmane <vfurmane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/16 15:25:40 by vfurmane          #+#    #+#             */
-/*   Updated: 2021/01/18 09:53:51 by vfurmane         ###   ########.fr       */
+/*   Updated: 2021/01/19 13:34:24 by vfurmane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	ft_precision(const char *str, int *str_index, va_list args)
 {
 	int	precision;
 
-	precision = 0;
+	precision = 1;
 	if (str[*str_index] == '.')
 	{
 		(*str_index)++;
