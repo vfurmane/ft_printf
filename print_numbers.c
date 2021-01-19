@@ -6,7 +6,7 @@
 /*   By: vfurmane <vfurmane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/17 09:56:41 by vfurmane          #+#    #+#             */
-/*   Updated: 2021/01/19 13:33:13 by vfurmane         ###   ########.fr       */
+/*   Updated: 2021/01/19 21:23:24 by vfurmane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,15 +59,15 @@ char	*ft_print_int(va_list args, long int precision, int isunsigned)
 
 char	*ft_print_hex(va_list args, int lower)
 {
-	int				len;
-	char			*set;
-	char			*str;
-	unsigned int	nb;
+	int			len;
+	char		*set;
+	char		*str;
+	long int	nb;
 
 	set = "0123456789ABCDEF";
 	if (lower == 1)
 		set = "0123456789abcdef";
-	nb = va_arg(args, unsigned int);
+	nb = va_arg(args, long int);
 	if (nb < 0)
 		nb = -nb;
 	len = ft_count_digits_hex(nb);
@@ -75,6 +75,8 @@ char	*ft_print_hex(va_list args, int lower)
 		return (NULL);
 	str[0] = '-';
 	str[len] = '\0';
+	if (nb == 0)
+		str[0] = '0';
 	while (nb)
 	{
 		str[len-- - 1] = set[nb % 16];
