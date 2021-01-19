@@ -6,7 +6,7 @@
 /*   By: vfurmane <vfurmane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/16 11:31:24 by vfurmane          #+#    #+#             */
-/*   Updated: 2021/01/18 19:18:18 by vfurmane         ###   ########.fr       */
+/*   Updated: 2021/01/19 10:27:50 by vfurmane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,18 +57,13 @@ int		ft_copy_in_buffer(char *res, char *buffer, int i)
 	return (total_size);
 }
 
-int		ft_check_percentage(const char *str, const char *specifier)
+int		ft_check_percentage(const char *specifier)
 {
-	int	i;
-
 	if (*specifier == 'c' || *specifier == 'd' || *specifier == 'i' ||
 			*specifier == 's' || *specifier == 'u' || *specifier == 'x' ||
 			*specifier == 'X' || *specifier == 'p' || *specifier == '%')
 		return (0);
-	i = 0;
-	while (&str[i] < specifier)
-		i++;
-	return (i);
+	return (1);
 }
 
 int		ft_parse_format(const char *str, int *str_index, char *buffer,
@@ -94,7 +89,7 @@ int		ft_parse_format(const char *str, int *str_index, char *buffer,
 		return (-1);
 	}
 	/* Reverse str for tests below, maybe upper the line and alter res */
-	(*str_index) -= ft_check_percentage(&str[total_size - 1], &str[*str_index]);
+	(*str_index) -= ft_check_percentage(&str[*str_index]);
 	total_size = ft_copy_in_buffer(res, buffer, ft_get_buffer_i(buffer));
 	free(substr);
 	free(res);
