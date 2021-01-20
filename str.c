@@ -6,7 +6,7 @@
 /*   By: vfurmane <vfurmane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/17 21:53:50 by vfurmane          #+#    #+#             */
-/*   Updated: 2021/01/18 10:57:25 by vfurmane         ###   ########.fr       */
+/*   Updated: 2021/01/20 11:47:19 by vfurmane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,7 @@ int		ft_count_digits_hex(int nbr)
 	if (nbr == 0)
 		return (1);
 	len = 0;
-	if (nbr < 0)
-		len++;
-	if (nbr < 0)
-		nb = -nbr;
-	else
-		nb = nbr;
+	nb = nbr;
 	while (nb)
 	{
 		nb /= 16;
