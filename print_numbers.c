@@ -6,7 +6,7 @@
 /*   By: vfurmane <vfurmane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/17 09:56:41 by vfurmane          #+#    #+#             */
-/*   Updated: 2021/01/20 11:45:13 by vfurmane         ###   ########.fr       */
+/*   Updated: 2021/01/20 12:45:26 by vfurmane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ char	*ft_print_int(va_list args, long int precision, int isunsigned)
 	return (str);
 }
 
-char	*ft_print_hex(va_list args, int lower)
+char	*ft_print_hex(va_list args, int lower, int precision)
 {
 	int				len;
 	char			*set;
@@ -73,7 +73,6 @@ char	*ft_print_hex(va_list args, int lower)
 	len = ft_count_digits_hex(nb);
 	if ((str = malloc((len + 1) * sizeof(*str))) == NULL)
 		return (NULL);
-	str[0] = '-';
 	str[len] = '\0';
 	if (nb == 0)
 		str[0] = '0';
@@ -82,5 +81,7 @@ char	*ft_print_hex(va_list args, int lower)
 		str[len-- - 1] = set[nb % 16];
 		nb /= 16;
 	}
+	if (ft_strlen(str) < precision)
+		str = ft_realloc_nbr(str, precision);
 	return (str);
 }
