@@ -6,7 +6,7 @@
 /*   By: vfurmane <vfurmane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/16 11:49:20 by vfurmane          #+#    #+#             */
-/*   Updated: 2021/01/17 15:27:59 by vfurmane         ###   ########.fr       */
+/*   Updated: 2021/01/20 16:46:02 by vfurmane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int	ft_flags(const char *str, int *str_index, va_list args, char **res)
 {
 	int		minus;
+	int		len;
 	char	filler;
 
 	minus = 0;
@@ -27,9 +28,14 @@ int	ft_flags(const char *str, int *str_index, va_list args, char **res)
 			filler = '0';
 		(*str_index)++;
 	}
+	len = 0;
+	if (str[*str_index] == '*')
+		len = va_arg(args, int);
+	if (len < 0)
+		minus = 1;
 	if (minus == 1)
 		filler = ' ';
-	if ((*res = ft_width(str, str_index, args, filler)) == NULL)
+	if ((*res = ft_width(str, str_index, len, filler)) == NULL)
 		return (-1);
 	return (minus);
 }
