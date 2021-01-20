@@ -6,7 +6,7 @@
 /*   By: vfurmane <vfurmane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/16 11:31:24 by vfurmane          #+#    #+#             */
-/*   Updated: 2021/01/19 10:27:50 by vfurmane         ###   ########.fr       */
+/*   Updated: 2021/01/20 11:21:22 by vfurmane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,6 @@ int		ft_parse_format(const char *str, int *str_index, char *buffer,
 		free(substr);
 		return (-1);
 	}
-	/* Reverse str for tests below, maybe upper the line and alter res */
 	(*str_index) -= ft_check_percentage(&str[*str_index]);
 	total_size = ft_copy_in_buffer(res, buffer, ft_get_buffer_i(buffer));
 	free(substr);

@@ -6,7 +6,7 @@
 /*   By: vfurmane <vfurmane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/17 09:56:41 by vfurmane          #+#    #+#             */
-/*   Updated: 2021/01/19 21:23:24 by vfurmane         ###   ########.fr       */
+/*   Updated: 2021/01/20 11:23:47 by vfurmane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ char	*ft_print_hex(va_list args, int lower)
 	set = "0123456789ABCDEF";
 	if (lower == 1)
 		set = "0123456789abcdef";
-	nb = va_arg(args, long int);
+	nb = (long int)va_arg(args, int);
 	if (nb < 0)
 		nb = -nb;
 	len = ft_count_digits_hex(nb);
