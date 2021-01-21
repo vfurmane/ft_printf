@@ -6,7 +6,7 @@
 /*   By: vfurmane <vfurmane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/16 11:31:24 by vfurmane          #+#    #+#             */
-/*   Updated: 2021/01/21 10:52:45 by vfurmane         ###   ########.fr       */
+/*   Updated: 2021/01/21 12:05:41 by vfurmane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,15 @@ int		ft_copy_in_buffer(char *res, char *buffer, int i)
 	return (total_size);
 }
 
+char	*ft_replace_precision(char *res, int precision)
+{
+	if (precision == 0)
+	{
+		ft_memset(res, ' ', ft_strlen(res));
+	}
+	return (res);
+}
+
 int		ft_check_percentage(const char *specifier)
 {
 	if (*specifier == 'c' || *specifier == 'd' || *specifier == 'i' ||
@@ -81,6 +90,7 @@ int		ft_parse_format(const char *str, int *str_index, char *buffer,
 	if (minus == -1)
 		return (-1);
 	precision = ft_precision(str, str_index, args, res);
+	res = ft_replace_precision(res, precision);
 	substr = ft_specifier(&str[*str_index], args, precision);
 	if (substr == NULL || (res = ft_format_str(res, substr, minus)) == NULL)
 	{
