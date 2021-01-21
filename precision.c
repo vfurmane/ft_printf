@@ -6,7 +6,7 @@
 /*   By: vfurmane <vfurmane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/16 15:25:40 by vfurmane          #+#    #+#             */
-/*   Updated: 2021/01/21 11:08:21 by vfurmane         ###   ########.fr       */
+/*   Updated: 2021/01/21 12:47:49 by vfurmane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	ft_precision(const char *str, int *str_index, va_list args, char *res)
 		precision = ft_atoi(&str[*str_index]);
 	}
 	else if (res[0] == '0')
-		precision = ft_strlen(res) - 1;
+		precision = ft_strlen(res) != 0;
 	if (precision == 0 && str[*str_index] == '*')
 	{
 		(*str_index)++;
