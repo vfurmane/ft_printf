@@ -6,7 +6,7 @@
 /*   By: vfurmane <vfurmane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/16 11:31:24 by vfurmane          #+#    #+#             */
-/*   Updated: 2021/01/20 11:21:22 by vfurmane         ###   ########.fr       */
+/*   Updated: 2021/01/21 10:52:45 by vfurmane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int		ft_parse_format(const char *str, int *str_index, char *buffer,
 	minus = ft_flags(str, str_index, args, &res);
 	if (minus == -1)
 		return (-1);
-	precision = ft_precision(str, str_index, args);
+	precision = ft_precision(str, str_index, args, res);
 	substr = ft_specifier(&str[*str_index], args, precision);
 	if (substr == NULL || (res = ft_format_str(res, substr, minus)) == NULL)
 	{
