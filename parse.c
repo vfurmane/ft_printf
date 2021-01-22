@@ -6,7 +6,7 @@
 /*   By: vfurmane <vfurmane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/16 11:31:24 by vfurmane          #+#    #+#             */
-/*   Updated: 2021/01/21 12:05:41 by vfurmane         ###   ########.fr       */
+/*   Updated: 2021/01/22 15:59:44 by vfurmane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,8 @@ int		ft_copy_in_buffer(char *res, char *buffer, int i)
 
 char	*ft_replace_precision(char *res, int precision)
 {
-	if (precision == 0)
-	{
+	if (precision >= 0)
 		ft_memset(res, ' ', ft_strlen(res));
-	}
 	return (res);
 }
 

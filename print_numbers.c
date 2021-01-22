@@ -6,7 +6,7 @@
 /*   By: vfurmane <vfurmane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/17 09:56:41 by vfurmane          #+#    #+#             */
-/*   Updated: 2021/01/20 17:59:58 by vfurmane         ###   ########.fr       */
+/*   Updated: 2021/01/22 14:13:31 by vfurmane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,10 @@ char	*ft_print_int(va_list args, long int precision, int isunsigned)
 		nbr = va_arg(args, unsigned int);
 	else
 		nbr = va_arg(args, int);
+	if (precision < 0 && nbr < 0)
+		precision = -precision - 1;
+	else if (precision < 0)
+		precision = -precision;
 	if (isunsigned == 1 && nbr < 0)
 		str = ft_long_itoa((unsigned int)-nbr);
 	else if (isunsigned == 1)
