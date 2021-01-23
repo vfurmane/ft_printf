@@ -6,7 +6,7 @@
 /*   By: vfurmane <vfurmane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/17 18:09:50 by vfurmane          #+#    #+#             */
-/*   Updated: 2021/01/23 17:56:04 by vfurmane         ###   ########.fr       */
+/*   Updated: 2021/01/23 18:22:42 by vfurmane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ char	*ft_print_address(va_list args)
 	len = ft_count_digits_hex(nbr) + 2;
 	if ((str = malloc((len + 1) * sizeof(*str))) == NULL)
 		return (NULL);
+	if (nbr == 0)
+		str[2] = '0';
 	i = 0;
 	while (nbr)
 	{
