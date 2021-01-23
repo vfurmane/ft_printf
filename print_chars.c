@@ -6,7 +6,7 @@
 /*   By: vfurmane <vfurmane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/17 18:09:50 by vfurmane          #+#    #+#             */
-/*   Updated: 2021/01/23 15:49:51 by vfurmane         ###   ########.fr       */
+/*   Updated: 2021/01/23 17:32:58 by vfurmane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*ft_print_char(va_list args)
 	return (str);
 }
 
-char	*ft_print_string(va_list args, char *res)
+char	*ft_print_string(va_list args, int precision, char *res)
 {
 	int		str_len;
 	char	*str;
@@ -34,6 +34,8 @@ char	*ft_print_string(va_list args, char *res)
 		ref = "(null)";
 	ft_memset(res, ' ', ft_strlen(res) * sizeof(*res));
 	str_len = ft_strlen(ref);
+	if (precision > 0 && precision < str_len)
+		str_len = precision;
 	if ((str = malloc((str_len + 1) * sizeof(*str))) == NULL)
 		return (NULL);
 	ft_strlcpy(str, ref, str_len + 1);
