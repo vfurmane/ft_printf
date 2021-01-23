@@ -6,7 +6,7 @@
 /*   By: vfurmane <vfurmane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/17 18:09:50 by vfurmane          #+#    #+#             */
-/*   Updated: 2021/01/18 09:54:26 by vfurmane         ###   ########.fr       */
+/*   Updated: 2021/01/23 15:38:59 by vfurmane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ char	*ft_print_string(va_list args)
 	char	*ref;
 
 	ref = va_arg(args, char*);
+	if (ref == NULL)
+		ref = "(null)";
 	str_len = ft_strlen(ref);
 	if ((str = malloc((str_len + 1) * sizeof(*str))) == NULL)
 		return (NULL);
