@@ -6,7 +6,7 @@
 /*   By: vfurmane <vfurmane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/17 18:10:31 by vfurmane          #+#    #+#             */
-/*   Updated: 2021/01/24 11:35:02 by vfurmane         ###   ########.fr       */
+/*   Updated: 2021/01/24 13:45:20 by vfurmane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,6 @@
 
 char	*ft_print_char(va_list args);
 char	*ft_print_string(va_list args, int precision);
-char	*ft_print_address(va_list args);
+char	*ft_print_address(va_list args, int precision);
 
 #endif
