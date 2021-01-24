@@ -6,7 +6,7 @@
 /*   By: vfurmane <vfurmane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 19:45:18 by vfurmane          #+#    #+#             */
-/*   Updated: 2021/01/23 20:17:06 by vfurmane         ###   ########.fr       */
+/*   Updated: 2021/01/24 18:13:44 by vfurmane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	ft_printf(const char *str, ...)
 	va_list		args;
 
 	if (BUFSIZ <= 0 || !(buffer = malloc(sizeof(*buffer))) ||
-			!(buffer->content = ft_calloc((BUFSIZ + 1), sizeof(*buffer->content))))
+		!(buffer->content = ft_calloc((BUFSIZ + 1), sizeof(*buffer->content))))
 		return (-1);
 	va_start(args, str);
 	buffer->i = 0;
