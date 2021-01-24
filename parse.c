@@ -6,13 +6,13 @@
 /*   By: vfurmane <vfurmane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/16 11:31:24 by vfurmane          #+#    #+#             */
-/*   Updated: 2021/01/23 15:48:37 by vfurmane         ###   ########.fr       */
+/*   Updated: 2021/01/24 10:33:35 by vfurmane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*ft_format_str(char *res, char *str, int minus)
+char	*ft_format_str(char *res, char *str, char specifier, int minus)
 {
 	int	i;
 	int	res_len;
@@ -20,6 +20,8 @@ char	*ft_format_str(char *res, char *str, int minus)
 
 	res_len = ft_strlen(res);
 	str_len = ft_strlen(str);
+	if (specifier == 'c')
+		str_len++;
 	if (res_len < str_len)
 	{
 		free(res);
@@ -30,29 +32,36 @@ char	*ft_format_str(char *res, char *str, int minus)
 	}
 	i = -1;
 	if (minus == 0)
-		while (str[++i])
+		while (++i < str_len)
 			res[res_len - i - 1] = str[str_len - i - 1];
 	else
-		while (str[++i])
+		while (++i < str_len)
 			res[i] = str[i];
 	return (res);
 }
 
-int		ft_copy_in_buffer(char *res, char *buffer, int i)
+int		ft_copy_in_buffer(char *res, t_buffer *buffer, int res_len, char spec)
 {
 	int	j;
 	int	total_size;
+	int	str_end;
 
 	j = 0;
 	total_size = 0;
-	while (res[j])
+	str_end = 0;
+	while ((res[j] && str_end == 0) || (res[0] == '\0' && spec == 'c') ||
+			j < res_len)
 	{
-		if (i == BUFSIZ)
+		if (buffer->i == BUFSIZ)
 		{
-			total_size = ft_flush(buffer, i);
-			i = 0;
+			total_size = ft_flush(buffer->content, buffer->i);
+			buffer->i = 0;
 		}
-		buffer[i++] = res[j++];
+		if (res[j] == '\0')
+			str_end = 1;
+		buffer->content[buffer->i++] = res[j++];
+		if (str_end == 1 && j >= res_len)
+			break ;
 	}
 	return (total_size);
 }
@@ -73,7 +82,7 @@ int		ft_check_percentage(const char *specifier)
 	return (1);
 }
 
-int		ft_parse_format(const char *str, int *str_index, char *buffer,
+int		ft_parse_format(const char *str, int *str_index, t_buffer *buffer,
 		va_list args)
 {
 	int		total_size;
@@ -83,21 +92,22 @@ int		ft_parse_format(const char *str, int *str_index, char *buffer,
 	char	*substr;
 
 	(*str_index)++;
-	total_size = *str_index;
 	minus = ft_flags(str, str_index, args, &res);
 	if (minus == -1)
 		return (-1);
 	precision = ft_precision(str, str_index, args, res);
 	res = ft_replace_precision(res, precision);
 	substr = ft_specifier(&str[*str_index], args, precision, res);
-	if (substr == NULL || (res = ft_format_str(res, substr, minus)) == NULL)
+	total_size = ft_strlen(res);
+	if (substr == NULL ||
+			(res = ft_format_str(res, substr, str[*str_index], minus)) == NULL)
 	{
 		free(res);
 		free(substr);
 		return (-1);
 	}
 	(*str_index) -= ft_check_percentage(&str[*str_index]);
-	total_size = ft_copy_in_buffer(res, buffer, ft_get_buffer_i(buffer));
+	total_size = ft_copy_in_buffer(res, buffer, total_size, str[*str_index]);
 	free(substr);
 	free(res);
 	return (total_size);
