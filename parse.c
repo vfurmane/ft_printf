@@ -6,7 +6,7 @@
 /*   By: vfurmane <vfurmane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/16 11:31:24 by vfurmane          #+#    #+#             */
-/*   Updated: 2021/01/24 10:33:35 by vfurmane         ###   ########.fr       */
+/*   Updated: 2021/01/24 10:46:47 by vfurmane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_format_str(char *res, char *str, char specifier, int minus)
 
 	res_len = ft_strlen(res);
 	str_len = ft_strlen(str);
-	if (specifier == 'c')
+	if (specifier == 'c' && str[0] == '\0')
 		str_len++;
 	if (res_len < str_len)
 	{
@@ -60,7 +60,7 @@ int		ft_copy_in_buffer(char *res, t_buffer *buffer, int res_len, char spec)
 		if (res[j] == '\0')
 			str_end = 1;
 		buffer->content[buffer->i++] = res[j++];
-		if (str_end == 1 && j >= res_len)
+		if (str_end == 1 && spec == 'c' && j >= res_len)
 			break ;
 	}
 	return (total_size);
