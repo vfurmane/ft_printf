@@ -6,7 +6,7 @@
 /*   By: vfurmane <vfurmane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/17 21:53:50 by vfurmane          #+#    #+#             */
-/*   Updated: 2021/01/20 14:08:44 by vfurmane         ###   ########.fr       */
+/*   Updated: 2021/01/24 15:09:27 by vfurmane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,24 +56,22 @@ char	*ft_long_itoa(long int nbr)
 	return (str);
 }
 
-int		ft_count_digits_hex(int nbr)
+int		ft_count_digits_hex(long int nbr)
 {
-	int				len;
-	unsigned int	nb;
+	int			len;
 
 	if (nbr == 0)
 		return (1);
 	len = 0;
-	nb = nbr;
-	while (nb)
+	while (nbr)
 	{
-		nb /= 16;
+		nbr /= 16;
 		len++;
 	}
 	return (len);
 }
 
-char	*ft_long_itoa_hex(unsigned int nbr, char *set)
+char	*ft_long_itoa_hex(long int nbr, char *set)
 {
 	int				len;
 	char			*str;

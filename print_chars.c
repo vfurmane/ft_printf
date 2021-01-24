@@ -6,7 +6,7 @@
 /*   By: vfurmane <vfurmane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/17 18:09:50 by vfurmane          #+#    #+#             */
-/*   Updated: 2021/01/24 13:53:48 by vfurmane         ###   ########.fr       */
+/*   Updated: 2021/01/24 15:04:53 by vfurmane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,9 @@ char	*ft_print_address(va_list args, int precision)
 {
 	char			*str;
 	char			*hex_str;
-	unsigned int	nbr;
+	long int		nbr;
 
-	nbr = (unsigned int)va_arg(args, int);
+	nbr = va_arg(args, long int);
 	if (precision == 0 && nbr == 0)
 		str = ft_calloc(3, sizeof(*str));
 	else
