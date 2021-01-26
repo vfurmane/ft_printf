@@ -6,7 +6,7 @@
 /*   By: vfurmane <vfurmane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/16 11:31:24 by vfurmane          #+#    #+#             */
-/*   Updated: 2021/01/24 18:12:20 by vfurmane         ###   ########.fr       */
+/*   Updated: 2021/01/26 11:04:14 by vfurmane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int		ft_copy_in_buffer(char *res, t_buffer *buffer, int res_len, char spec)
 	{
 		if (buffer->i == BUFSIZ)
 		{
-			total_size = ft_flush(buffer->content, buffer->i);
+			total_size += ft_flush(buffer->content, buffer->i);
 			buffer->i = 0;
 		}
 		if (res[j] == '\0')
